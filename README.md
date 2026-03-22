@@ -1,6 +1,6 @@
 # claude-tmux
 
-A [Claude Code](https://claude.ai/claude-code) plugin that visualizes session status in your tmux status bar and session list.
+Claude Code plugin that visualizes session status in your tmux session list.
 
 ```
   ⊞ ask-ai
@@ -26,33 +26,18 @@ Works with any tmux setup. Pairs great with [sesh](https://github.com/joshmedesk
 
 ## Install
 
-### From marketplace (recommended)
+In Claude Code, run:
 
-Add the marketplace to your Claude Code settings, then install:
-
-```bash
-claude marketplace add github:Wingsdh/claude-tmux
-claude plugin install claude-tmux
+```
+/plugin marketplace add Wingsdh/claude-tmux
+/plugin install claude-tmux
 ```
 
-### Direct install
-
-```bash
-claude plugin add github:Wingsdh/claude-tmux
-```
-
-### Manual
-
-```bash
-git clone https://github.com/Wingsdh/claude-tmux.git ~/.claude/plugins/claude-tmux
-chmod +x ~/.claude/plugins/claude-tmux/scripts/claude-tmux.sh
-```
-
-All methods activate hooks automatically — no extra configuration needed.
+Restart Claude Code. Hooks activate automatically.
 
 ## How it works
 
-The plugin uses Claude Code [hooks](https://docs.anthropic.com/en/docs/claude-code/hooks) to detect state changes:
+The plugin uses Claude Code hooks to detect state changes:
 
 | Hook | Triggers | Sets status to |
 |------|----------|---------------|
@@ -131,7 +116,6 @@ The plugin includes a `/tmux-status` slash command:
 Add to your `~/.tmux.conf` to auto-clear status when Claude exits:
 
 ```bash
-# Wraps claude to restore session name on exit
 bind C-c new-window -n "cc" -c "#{pane_current_path}" \
   "~/.claude/plugins/claude-tmux/scripts/claude-tmux.sh waiting && claude --model sonnet; ~/.claude/plugins/claude-tmux/scripts/claude-tmux.sh idle"
 ```
