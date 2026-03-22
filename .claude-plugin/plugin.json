@@ -1,0 +1,8 @@
+{
+  "name": "claude-tmux",
+  "description": "Visualize Claude Code session status in tmux — ⚡ running, 💬 waiting, 🔐 needs permission",
+  "author": {
+    "name": "Wingsdh",
+    "url": "https://github.com/Wingsdh"
+  }
+}

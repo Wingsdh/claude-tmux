@@ -1,0 +1,21 @@
+{
+  "$schema": "https://anthropic.com/claude-code/marketplace.schema.json",
+  "name": "claude-tmux",
+  "description": "Claude Code tmux integration — session status visualization and more",
+  "owner": {
+    "name": "Wingsdh",
+    "url": "https://github.com/Wingsdh"
+  },
+  "plugins": [
+    {
+      "name": "claude-tmux",
+      "description": "Visualize Claude Code session status in tmux — ⚡ running, 💬 waiting, 🔐 needs permission",
+      "category": "development",
+      "source": {
+        "source": "github",
+        "repo": "Wingsdh/claude-tmux"
+      },
+      "homepage": "https://github.com/Wingsdh/claude-tmux"
+    }
+  ]
+}
