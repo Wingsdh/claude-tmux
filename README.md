@@ -1,5 +1,7 @@
 # claude-tmux
 
+[English](README.md) | [中文](README.zh-CN.md)
+
 Claude Code plugin that visualizes session status in your tmux session list.
 
 ```
