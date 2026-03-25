@@ -41,6 +41,9 @@ BORDER_WAITING="${CLAUDE_TMUX_BORDER_WAITING:-$BORDER_WAITING}"
 BORDER_PERMISSION="${CLAUDE_TMUX_BORDER_PERMISSION:-$BORDER_PERMISSION}"
 BORDER_IDLE="${CLAUDE_TMUX_BORDER_IDLE:-$BORDER_IDLE}"
 
+# ── 脚本路径（用于 tmux hook 回调）─────────────────────────
+SCRIPT_PATH="$(cd "$(dirname "$0")" && pwd)/$(basename "$0")"
+
 # ── 状态管理 ──────────────────────────────────────────────
 
 # 用 @claude_base_name 存原始 session 名，避免去前缀的兼容性问题
@@ -80,6 +83,9 @@ case "${1:-}" in
     set_status "running" "$ICON_RUNNING" "$BORDER_RUNNING"
     ;;
   waiting)
+    # 注册 tmux hook：用户切入该 session 时自动清除等待图标（放在 set_status 前，避免重复跳过时漏注册）
+    tmux set-hook -g 'client-session-changed[1000]' \
+      "if -F '#{==:#{@claude_status},waiting}' 'run-shell \"${SCRIPT_PATH} idle\"'"
     set_status "waiting" "$ICON_WAITING" "$BORDER_WAITING"
     ;;
   permission)
