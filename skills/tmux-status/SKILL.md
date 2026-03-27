@@ -19,7 +19,7 @@ allowed-tools: [Bash]
 如果参数为 `reset`，运行：
 
 ```bash
-"${CLAUDE_PLUGIN_ROOT}/scripts/claude-tmux-status.sh" idle
+"${CLAUDE_PLUGIN_ROOT}/scripts/claude-tmux.sh" idle
 ```
 
 否则，运行以下命令显示当前状态：
@@ -28,4 +28,6 @@ allowed-tools: [Bash]
 echo "Session: $(tmux display-message -p '#S')"
 echo "Status: $(tmux show-option -qv @claude_status 2>/dev/null || echo 'idle')"
 echo "Base name: $(tmux show-option -qv @claude_base_name 2>/dev/null || echo 'N/A')"
+echo "Claude pane: $(tmux show-option -qv @claude_pane 2>/dev/null || echo 'N/A')"
+echo "Visual: $(tmux show-option -qv @claude_visual 2>/dev/null || echo 'N/A')"
 ```
